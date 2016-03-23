@@ -8,26 +8,6 @@ use \App\Config\Config;
 
 $applicationConfiguration = new Config();
 
-//**** Application Settings ************************//
-
-//Db Settings 
-$applicationConfiguration->setDbServer("localhost");
-$applicationConfiguration->setDbDriver("pdo_mysql");
-$applicationConfiguration->setDbUser("root");
-$applicationConfiguration->setDbPasswd("password");
-$applicationConfiguration->setDbName("test");
-
-//Paths
-$applicationConfiguration->setAppRoot("/");
-$applicationConfiguration->setViewFolder(__DIR__."/View/");
-$applicationConfiguration->setEntityFolder(array(__DIR__."/Model/"));
-
-//App
-$applicationConfiguration->setApplicationName('No Framework MVC App');
-
-//Error Level
-$applicationConfiguration->setErrorLevel('Development');
-
 //********************************************************//
 //Setup the enviroment 
 //********************************************************//
