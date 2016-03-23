@@ -34,7 +34,12 @@ class HomeController extends Controller
     {
         //If you want to authenticate the route
         //auth() will either route you off to the login or return the user and carry on 
-        $user = $this->auth($app->applicationConfiguration, $request, $response);
+
+        try {
+            $user = $this->auth($app->applicationConfiguration, $request, $response);
+        }catch(\Exception $e){
+            echo $e->getMessage();
+        }
         
         $today = new \DateTime();
     
