@@ -23,13 +23,29 @@ abstract class Controller
         $em = $this->getEntityManager($applicationConfiguration);
         
         $authenticated = false;
+
+        //Do your logic here
+        //For now I'm just going to assume the logic passed 
+        //and we will go get the passed user object for the sake of the demo.
+        $authenticated = true;
  
         if(!$authenticated)
         {
-            //$response->redirect("/MDWW1H00/?fwd=".$requestUrl);
+            //If not authenticated redircted to your login page or somewhere
+            //$response->redirect("");
         }
-        
+        else
+        {
+            try 
+            {
+                $profile = $em->getRepository('App\Model\Profile')->findBy(array('userId' => '2'));
+            }
+            catch(\Exception $e)
+            {
+                throw new Exception($e->getMessage());
+            }
+        }
+
         return $user;
-        
     }
 }
