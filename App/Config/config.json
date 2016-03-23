@@ -1,0 +1,10 @@
+{
+	"dbServer":"localhost",
+	"dbDriver":"pdo_mysql",
+	"dbUser":"root",
+	"dbPasswd":"password",
+	"dbName":"test",
+	"appRoot":"/",
+	"applicationName":"No Framework MVC App",
+	"errorLevel":"Development"
+}
