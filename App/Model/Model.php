@@ -7,6 +7,9 @@ namespace App\Model;
  */
 abstract class Model
 {
+    /**
+    * Get models properties as key, value pair array 
+    */
     public function properitesToArray()
     {
         $reflection = new \ReflectionObject($this);
@@ -21,6 +24,14 @@ abstract class Model
         }
         
         return $propertyArray;
+    }
+
+    /**
+    * Convert modals proerties to json array 
+    */
+    public function toJson()
+    {
+        return json_encode($this->properitesToArray());
     }
 }
 
