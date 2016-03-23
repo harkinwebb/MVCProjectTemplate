@@ -3,7 +3,13 @@
 
 {% block body %}
 	<h1> Hello {{ user }}, this is a secure page.</h1>
-	<h2> Welcome to the {{ progName }}</h2> 
+	<h2> Welcome to the {{ progName }}</h2>
+	<div>
+		<p>
+		Get a user list using a RESTFul end point
+		</p>
+		<button id="sauBtn">Get the list</button>
+	</div> 
 	<div id="userList"></div>
 {% endblock %}
 
