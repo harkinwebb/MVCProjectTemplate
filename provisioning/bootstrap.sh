@@ -54,6 +54,9 @@ echo "###########################################"
 curl -sS https://getcomposer.org/installer | php 
 mv composer.phar /usr/local/bin/composer
 
+cd /var/www
+composer install
+
 echo "###########################################"
 echo "#########      MYSQL Install     ##########"
 echo "###########################################"
@@ -63,4 +66,10 @@ echo mysql-server mysql-server/root_password_again password password | sudo debc
 
 apt-get install -y mysql-server
 apt-get install -y mysql-client
+
+echo "###########################################"
+echo "#########    Import test data    ##########"
+echo "###########################################"
+
+mysql -uroot -ppassword < /var/www/provisioning/test.sql
 
