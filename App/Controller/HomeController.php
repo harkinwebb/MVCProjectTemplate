@@ -15,10 +15,7 @@ use Klein\App;
 class HomeController extends Controller
 {
     public function homePage(Request $request, Response $response, ServiceProvider $service, App $app)
-    {
-        
-        $today = new \DateTime();
-        
+    {   
         $em = $this->getEntityManager($app->applicationConfiguration);
         
         try {
@@ -27,7 +24,7 @@ class HomeController extends Controller
             echo $e->getMessage();
         }
         
-        return $app->templateEngine->render('index.html.twig', array('user' => $profile[0]->getName(), 'today' => $today->format('d/m/Y'), 'progName' => $app->applicationConfiguration->getApplicationName()));
+        return $app->templateEngine->render('index.html.twig', array('user' => $profile[0]->getName(), 'progName' => $app->applicationConfiguration->getApplicationName()));
     }
     
     public function secureHomePage(Request $request, Response $response, ServiceProvider $service, App $app)
@@ -40,9 +37,7 @@ class HomeController extends Controller
         }catch(\Exception $e){
             echo $e->getMessage();
         }
-        
-        $today = new \DateTime();
     
-        return $app->templateEngine->render('secure.html.twig', array('user' => $user->getName(), 'today' => $today->format('d/m/Y'), 'progName' => $app->applicationConfiguration->getApplicationName()));
+        return $app->templateEngine->render('secure.html.twig', array('user' => $user->getName(), 'progName' => $app->applicationConfiguration->getApplicationName()));
     }
 }

@@ -21,7 +21,7 @@ class JsonController extends Controller
         
         try
         {
-            $profil = $em->getRepository('App\Model\Profil')->findAll();
+            $profile = $em->getRepository('App\Model\Profile')->findAll();
         }
         catch(\Exception $e)
         {
@@ -31,7 +31,7 @@ class JsonController extends Controller
         
         $userArray = array();
         
-        foreach($profil as $user)
+        foreach($profile as $user)
         {   
             $userArray[] = $user->properitesToArray();    
         }

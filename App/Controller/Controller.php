@@ -21,8 +21,6 @@ abstract class Controller
     protected function auth(Config $applicationConfiguration, Request $request, Response $response)
     {
         $em = $this->getEntityManager($applicationConfiguration);
-        
-        $authenticated = false;
 
         //Do your logic here
         //For now I'm just going to assume the logic passed 
@@ -38,7 +36,7 @@ abstract class Controller
         {
             try 
             {
-                $profile = $em->getRepository('App\Model\Profile')->findBy(array('userId' => '2'));
+                $user = $em->getRepository('App\Model\Profile')->findBy(array('userId' => '2'));
             }
             catch(\Exception $e)
             {
@@ -46,6 +44,6 @@ abstract class Controller
             }
         }
 
-        return $user;
+        return $user[0];
     }
 }
