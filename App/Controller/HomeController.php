@@ -22,12 +22,12 @@ class HomeController extends Controller
         $em = $this->getEntityManager($app->applicationConfiguration);
         
         try {
-            $profil = $em->getRepository('App\Model\Profile')->findBy(array('userId' => '0'));
+            $profile = $em->getRepository('App\Model\Profile')->findBy(array('userId' => '1'));
         }catch(\Exception $e){
             echo $e->getMessage();
         }
         
-        return $app->templateEngine->render('index.html.twig', array('user' => $profil[0]->getName(), 'today' => $today->format('d/m/Y'), 'progName' => $app->applicationConfiguration->getApplicationName()));
+        return $app->templateEngine->render('index.html.twig', array('user' => $profile[0]->getName(), 'today' => $today->format('d/m/Y'), 'progName' => $app->applicationConfiguration->getApplicationName()));
     }
     
     public function secureHomePage(Request $request, Response $response, ServiceProvider $service, App $app)
