@@ -19,19 +19,110 @@ class Config
 
     protected $errorLevel;
 
-    public function __construct()
+    public function __construct($configFile = "")
     {
-        $this->setDbServer("");
-        $this->setDbDriver("");
-        $this->setDbUser("");
-        $this->setDbPasswd("");
-        $this->setDbName(""); 
+        if($configFile == "")
+        {
+            $configFile = __DIR__.'/config.json';
+        }
+
+        $settingFileObj = json_decode($configFile);    
+
+        if(!$settingFileObj)
+        {
+            echo json_last_error();
+            die();
+        }
+
+        if(property_exists($settingFileObj, 'dbServer'))
+        {
+            $this->setDbServer($settingFileObj->dbServer);
+        }
+        else
+        {
+            $this->setDbServer("localhost");   
+        }
         
-        $this->setAppRoot("");
-        $this->setViewFolder("");
-        $this->setEntityFolder(array());
-        $this->setApplicationName("");
-        $this->setErrorLevel("Production");
+        if(property_exists($settingFileObj, 'dbDriver'))
+        {
+            $this->setDbDriver($settingFileObj->dbDriver);
+        }
+        else
+        {
+            $this->setDbDriver("pdo_mysql");
+        }
+
+        if(property_exists($settingFileObj, 'dbUser'))
+        {
+            $this->setDbUser($settingFileObj->dbUser);
+        }
+        else
+        {
+            $this->setDbUser("");
+        }
+
+        if(property_exists($settingFileObj, 'dbPasswd'))
+        {
+            $this->setDbPasswd($settingFileObj->dbPasswd);
+        }
+        else
+        {
+            $this->setDbPasswd("");
+        }
+
+        if(property_exists($settingFileObj, 'dbName'))
+        {
+            $this->setDbName($settingFileObj->dbName); 
+        }
+        else
+        {
+            $this->setDbName(""); 
+        }
+
+        if(property_exists($settingFileObj, 'appRoot'))
+        {
+            $this->setAppRoot($settingFileObj->appRoot);
+        }
+        else
+        {
+            $this->setAppRoot("/");
+        }
+
+        if(property_exists($settingFileObj, 'viewFolder'))
+        {
+            $this->setViewFolder("");
+        }
+        else
+        {
+            $this->setViewFolder(dirname(__DIR__)."/View/");
+        }
+
+        if(property_exists($settingFileObj, 'entityFolder'))
+        {
+            $this->setEntityFolder(array($settingFileObj->entityFolder));
+        }
+        else
+        {
+            $this->setEntityFolder(array(dirname(__DIR__)."/Model/"));
+        }
+
+        if(property_exists($settingFileObj, 'applicationName'))
+        {
+            $this->setApplicationName($settingFileObj->applicationName);
+        }
+        else
+        {
+            $this->setApplicationName("");   
+        }
+
+        if(property_exists($settingFileObj, 'errorLevel'))
+        {
+            $this->setErrorLevel($settingFileObj->errorLevel);
+        }
+        else
+        {
+            $this->setErrorLevel("Production");
+        }
     }
     
     /**
