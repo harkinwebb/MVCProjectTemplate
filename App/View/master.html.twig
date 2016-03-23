@@ -1,0 +1,28 @@
+<!doctype html>
+
+<html lang="en">
+    <head>
+    	{% block head %}
+            <meta charset="utf-8">
+            <meta http-equiv="Pragma" content="no-cache" />
+            <title>{{ progName }}</title>
+            
+            <!--[if lt IE 9]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+            <![endif]-->
+        {% endblock %}
+    </head>
+    
+    <body>
+    
+        <div id="contents">
+        	{% block body %}
+                
+            {% endblock %}
+        </div>
+        	
+        {% block js %}
+
+       	{% endblock %}
+    </body>
+</html>

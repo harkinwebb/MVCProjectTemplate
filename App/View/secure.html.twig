@@ -1,0 +1,13 @@
+{# Include master and its blocks #}
+{% extends "master.html.twig" %}
+
+{% block body %}
+	<h1> Hello {{ user }}, this is a secure page.</h1>
+	<h2> Welcome to the {{ progName }}</h2> 
+	<div id="userList"></div>
+{% endblock %}
+
+{% block js %}
+	{{ parent() }}
+	<script type="text/javascript" src="/js/master.js"></script>
+{% endblock %}

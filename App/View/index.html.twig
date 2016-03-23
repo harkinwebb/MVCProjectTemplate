@@ -1,0 +1,11 @@
+{# Include master and its blocks #}
+{% extends "master.html.twig" %}
+
+{% block body %}
+	<h1> Hello {{ user }}, this is a bit like a hello world.</h1>
+	<h2> Welcome to the {{ progName }}</h2> 
+{% endblock %}
+
+{% block js %}
+	{{ parent() }}
+{% endblock %}
