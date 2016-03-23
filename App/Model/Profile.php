@@ -11,7 +11,7 @@ class Profile extends Model
 {
     /**
      * @Id
-     * @Column(type="int", name="user_id")
+     * @Column(type="integer", name="user_id")
      * @GeneratedValue
      */
     private $userId;
