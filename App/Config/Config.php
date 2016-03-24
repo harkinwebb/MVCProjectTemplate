@@ -1,11 +1,15 @@
 <?php
 namespace App\Config;
 
+use App\Helper\Traits\FileManagment;
+
 /*
  * Application Configuration class 
  */
 class Config
 {
+    use FileManagment;
+
     protected $dbServer;
     protected $dbDriver;
     protected $dbUser;
@@ -26,13 +30,13 @@ class Config
             $configFile = __DIR__.'/config.json';
         }
 
-        $settingFileObj = json_decode($configFile);    
-
-        if(!$settingFileObj)
-        {
-            echo json_last_error();
-            die();
+        try{
+            $settingString = $this->getFileContents($configFile);
+        }catch(\Exeption $e){
+            echo $e->getMessage();
         }
+
+        $settingFileObj = json_decode($settingString);
 
         if(property_exists($settingFileObj, 'dbServer'))
         {
