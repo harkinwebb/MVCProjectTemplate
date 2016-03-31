@@ -1,4 +1,4 @@
-# No Framework Project Template
+# MVC Project Template
 
 ## What is it?
 Project template for creating applications when a full framework like laravel or Symfony are just to heavy.
@@ -10,6 +10,9 @@ To get you going theres a vagrant box and some example scripts.
 
 * Pull this project to a local dir
 * vagrant up 
+* At the client command line run.
+    * cd /var/www
+    * composer update 
 * go to 
-** localhost:8080
-** or localhost:8080/secure
+    * localhost:8080
+    * or localhost:8080/secure
